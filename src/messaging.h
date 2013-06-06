@@ -23,6 +23,7 @@ int getType(aJsonObject* json);
 
 aJsonObject* createJsonBase(int type);
 aJsonObject* createSensorData();
+aJsonObject* createSensorGroup(char* name);
 
 void addSensorValue(aJsonObject *json, char* name, int value);
 void addSensorValue(aJsonObject *json, char* name, double value);

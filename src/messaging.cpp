@@ -16,6 +16,10 @@ int getType(aJsonObject* json) {
 	return type->valueint;
 }
 
+
+// JSON message is of the format:
+// {"data":[{name:"", type:"", value:""}]}
+
 // aJsonObject *json, *header, *data;
 aJsonObject* createJsonBase(int type) {
   aJsonObject *json = aJson.createObject();
@@ -34,6 +38,15 @@ aJsonObject* createSensorData() {
 
 	aJsonObject *data = aJson.createArray();
 	aJson.addItemToObject(json, "data", data);
+
+	return json;
+}
+
+aJsonObject* createSensorGroup(char* name) {
+	aJsonObject* json = createJsonBase(SENSOR_DATA);
+
+	aJsonObject *group = aJson.createArray();
+	aJson.addItemToObject(json, name, group);
 
 	return json;
 }
